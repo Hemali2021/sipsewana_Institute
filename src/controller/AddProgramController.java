@@ -1,7 +1,6 @@
 package controller;
 
 import bo.BOFactory;
-import bo.custom.ProgramBO;
 import bo.custom.impl.ProgramBOImpl;
 import com.jfoenix.controls.JFXTextField;
 import dto.ProgramDTO;
@@ -58,7 +57,7 @@ public class AddProgramController {
     @FXML
     private Button btnBack;
 
-    private final ObservableList<ProgramDTO> prList = FXCollections.observableArrayList();
+    private final ObservableList<ProgramDTO> programList = FXCollections.observableArrayList();
     ProgramBOImpl programBOImpl= (ProgramBOImpl) BOFactory.getInstance().getBO(BOFactory.BOType.PROGRAM);
 
     public void initialize(){
@@ -67,11 +66,14 @@ public class AddProgramController {
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
-        Program program = new Program(txtId.getText(),"Software Engineering","2 years",200000);
+        Program program = new Program(txtId.getText(),txtName.getText(),txtDuration.getText(),Integer.parseInt(txtFee.getText()));
 
         boolean b = programBOImpl.addProgram(program);
         if(b){
             new Alert(Alert.AlertType.CONFIRMATION,"Program Added Done").show();
+            programList.clear();
+            tblProgram.refresh();
+            setTableData();
         }else{
             new Alert(Alert.AlertType.ERROR,"Program Not Added!").show();
         }
@@ -105,8 +107,8 @@ public class AddProgramController {
                     pr.getDuration(),
                     pr.getFee()
             );
-            prList.add(tm);
+            programList.add(tm);
         }
-        tblProgram.setItems(prList);
+        tblProgram.setItems(programList);
     }
 }

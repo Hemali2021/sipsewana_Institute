@@ -83,11 +83,12 @@ public class StudentRegistrationController {
         tblStudent.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
             selectedStudent=newValue ;
 
+            txttelNo.setText(newValue.getTel());
             txtname.setText(newValue.getName());
             txtAddress.setText(newValue.getAddress());
             txtEmail.setText(newValue.getEmail());
             txtId.setText(String.valueOf(newValue.getId()));
-            txttelNo.setText(newValue.getTel());
+
         }));
     }
 
@@ -116,7 +117,10 @@ public class StudentRegistrationController {
 
         if(b){
             new Alert(Alert.AlertType.CONFIRMATION,"Student Updated Done").show();
-            studentDTOList.clear();
+            if(!studentDTOList.isEmpty()){
+                tblStudent.refresh();
+                studentDTOList.clear();
+            }
             tblStudent.refresh();
             setTableData();
         }else{
