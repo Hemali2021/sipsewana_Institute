@@ -17,10 +17,12 @@ public class StudentBOImpl implements StudentBO {
         return studentDAO.getAllStudents();
     }
 
+    @Override
     public boolean addProgram(Student student){
         return studentDAO.addStudent(student);
     }
 
+    @Override
     public List<StudentDTO> getAllPrograms(){
         List<Student> programs = studentDAO.getAllStudents();
 
@@ -37,11 +39,13 @@ public class StudentBOImpl implements StudentBO {
         return prList;
     }
 
+    @Override
     public boolean deleteStudent(StudentDTO st){
         Student student = new Student(st.getId(),st.getName(),st.getEmail(),st.getAddress(),st.getTel());
         return studentDAO.deleteStudent(student);
     }
 
+    @Override
     public boolean updateStudent(StudentDTO st) {
         Student student = new Student(st.getId(),st.getName(),st.getEmail(),st.getAddress(),st.getTel());
         return studentDAO.update(student);

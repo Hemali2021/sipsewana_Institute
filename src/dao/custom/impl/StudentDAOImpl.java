@@ -18,6 +18,7 @@ public class StudentDAOImpl implements StudentDAO {
         this.sessionFactory = FactoryConfiguration.getSessionFactory();
     }
 
+    @Override
     public List<Student> getAllStudents(){
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -29,6 +30,7 @@ public class StudentDAOImpl implements StudentDAO {
         return list;
     }
 
+    @Override
     public boolean addStudent(Student entity) {
         Session session=sessionFactory.openSession();
         session.beginTransaction();
@@ -39,6 +41,7 @@ public class StudentDAOImpl implements StudentDAO {
         return save !=null;
     }
 
+    @Override
     public boolean deleteStudent(Student student){
         Session session=sessionFactory.openSession();
         session.beginTransaction();
@@ -49,6 +52,7 @@ public class StudentDAOImpl implements StudentDAO {
         return true;
     }
 
+    @Override
     public boolean update(Student student) {
         Session session=sessionFactory.openSession();
         session.beginTransaction();
