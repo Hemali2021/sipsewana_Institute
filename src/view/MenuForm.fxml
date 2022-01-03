@@ -14,7 +14,10 @@
             <Image url="@../assets/bc8.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="btnAddProgram" layoutX="82.0" layoutY="129.0" mnemonicParsing="false" onAction="#addProgramOnAction" prefHeight="117.0" prefWidth="119.0" style="-fx-background-radius: 60;" text="Add Programe" />
+      <Button fx:id="btnAddProgram" layoutX="79.0" layoutY="142.0" mnemonicParsing="false" onAction="#addProgramOnAction" prefHeight="117.0" prefWidth="119.0" style="-fx-background-radius: 60; -fx-border-radius: 60; -fx-border-color: #d1d1e0;" text="Add Programe" textFill="#616566">
+         <font>
+            <Font name="Berlin Sans FB" size="14.0" />
+         </font></Button>
       <Label layoutX="198.0" layoutY="42.0" prefHeight="35.0" prefWidth="204.0" text="SIPSEWANA">
          <font>
             <Font name="Cooper Black" size="30.0" />
@@ -25,7 +28,13 @@
             <Font name="Script MT Bold" size="23.0" />
          </font>
       </Label>
-      <Button fx:id="lblAddStudent" layoutX="241.0" layoutY="129.0" mnemonicParsing="false" onAction="#addStudentOnAction" prefHeight="117.0" prefWidth="119.0" style="-fx-background-radius: 60;" text="Add Student" />
-      <Button layoutX="400.0" layoutY="129.0" mnemonicParsing="false" prefHeight="117.0" prefWidth="119.0" style="-fx-background-radius: 60;" text="View Details" />
+      <Button fx:id="lblAddStudent" layoutX="242.0" layoutY="142.0" mnemonicParsing="false" onAction="#addStudentOnAction" prefHeight="117.0" prefWidth="119.0" style="-fx-background-radius: 60; -fx-border-radius: 60; -fx-border-color: #d1d1e0;" text="Add Student" textFill="#616566">
+         <font>
+            <Font name="Berlin Sans FB" size="14.0" />
+         </font></Button>
+      <Button layoutX="402.0" layoutY="142.0" mnemonicParsing="false" prefHeight="117.0" prefWidth="119.0" style="-fx-background-radius: 60; -fx-border-radius: 60; -fx-border-color: #d1d1e0;" text="View Details" textFill="#616566">
+         <font>
+            <Font name="Berlin Sans FB" size="14.0" />
+         </font></Button>
    </children>
 </AnchorPane>
