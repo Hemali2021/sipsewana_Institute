@@ -70,6 +70,9 @@ public class StudentRegistrationController {
     @FXML
     private Button btnDelete;
 
+    @FXML
+    private Button btnUpdate;
+
     private final ObservableList<StudentDTO> studentDTOList = FXCollections.observableArrayList();
     StudentBOImpl studentBOImpl = (StudentBOImpl) BOFactory.getInstance().getBO(BOFactory.BOType.STUDENT);
     StudentDTO selectedStudent = null;
@@ -79,10 +82,12 @@ public class StudentRegistrationController {
 
         tblStudent.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
             selectedStudent=newValue ;
-            /*if(newValue!=null){
-                setProgramData(newValue.getId());
-            }*/
 
+            txtname.setText(newValue.getName());
+            txtAddress.setText(newValue.getAddress());
+            txtEmail.setText(newValue.getEmail());
+            txtId.setText(String.valueOf(newValue.getId()));
+            txttelNo.setText(newValue.getTel());
         }));
     }
 
@@ -103,12 +108,34 @@ public class StudentRegistrationController {
     }
 
     @FXML
-    void deleteOnAction(ActionEvent event) {
-        studentBOImpl.deleteStudent(selectedStudent);
+    void btnUpdateOnAction(ActionEvent event) {
 
-        studentDTOList.clear();
-        tblStudent.refresh();
-        setTableData();
+        boolean b = studentBOImpl.updateStudent(
+                new StudentDTO(selectedStudent.getId(), txtname.getText(),txtEmail.getText(),txtAddress.getText(),txttelNo.getText())
+        );
+
+        if(b){
+            new Alert(Alert.AlertType.CONFIRMATION,"Student Updated Done").show();
+            studentDTOList.clear();
+            tblStudent.refresh();
+            setTableData();
+        }else{
+            new Alert(Alert.AlertType.ERROR,"Student Not Updated!").show();
+        }
+    }
+
+    @FXML
+    void deleteOnAction(ActionEvent event) {
+        boolean b = studentBOImpl.deleteStudent(selectedStudent);
+
+        if(b){
+            new Alert(Alert.AlertType.CONFIRMATION,"Student Deleted Done").show();
+            studentDTOList.clear();
+            tblStudent.refresh();
+            setTableData();
+        }else{
+            new Alert(Alert.AlertType.ERROR,"Student Not deleted!").show();
+        }
     }
 
 

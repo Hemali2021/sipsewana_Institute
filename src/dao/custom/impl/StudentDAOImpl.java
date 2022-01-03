@@ -48,4 +48,14 @@ public class StudentDAOImpl implements StudentDAO {
         session.getTransaction().commit();
         return true;
     }
+
+    public boolean update(Student student) {
+        Session session=sessionFactory.openSession();
+        session.beginTransaction();
+
+        session.update(student);
+
+        session.getTransaction().commit();
+        return true;
+    }
 }

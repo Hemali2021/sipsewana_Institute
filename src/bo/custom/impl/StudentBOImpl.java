@@ -41,4 +41,9 @@ public class StudentBOImpl implements StudentBO {
         Student student = new Student(st.getId(),st.getName(),st.getEmail(),st.getAddress(),st.getTel());
         return studentDAO.deleteStudent(student);
     }
+
+    public boolean updateStudent(StudentDTO st) {
+        Student student = new Student(st.getId(),st.getName(),st.getEmail(),st.getAddress(),st.getTel());
+        return studentDAO.update(student);
+    }
 }
